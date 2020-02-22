@@ -1,12 +1,12 @@
 # 2020年你应该选择哪个Java微服务框架 —— 探讨 Micronaut，Quarkus和Spring Boot，及各自的优缺点
 
-至今，Java仍旧是用来构建web应用的最流行编程语言之一，但是它不得不面对诸如Go，Python，和TypeScript等新语言的严峻挑战
+至今，Java仍旧是用来构建web应用的最流行编程语言之一 —— 但是它不得不面对诸如Go，Python，和TypeScript等新语言的严峻挑战。
 
 在Java世界里，Spring框架早已成为微服务开发过程中的事实标准。通过诸如Spring Boot和Spring Data这样的库，Spring框架变得简单易用，大部分场景下，开发过程高效无痛点。
 
-然而，最近几年一些新框架不断涌现，声称可以降低Java应用的启动时间和内存占用。我最近一直在用Java去构建大型的微服务架构应用，再次之前，我查了哪些Java框架最合适微服务架构
+然而，最近几年一些新框架不断涌现，声称可以降低Java应用的启动时间和内存占用。我最近一直在用Java去构建大型的微服务架构应用，再次之前，我查了哪些Java框架最合适微服务架构。
 
-因此，我主要关注在框架带来的易用性和资源管理
+因此，我主要关注在框架带来的易用性和资源管理。
 
 Spring虽然是Java平台最流行的框架，但是从来没有人说它是最好的框架。在资源管理这方面，尤其是单进程所需要的性能开销这块，Spring差强人意。在应用服务开发的旧时代，这不是一个大问题，因为进程实例数量不多。然而，随着微服务架构的崛起，我们会有大量的进程，这就是得Sring的这个问题更加突出。Christian Lusardi最近就这么说：
 
@@ -17,7 +17,7 @@ Spring虽然是Java平台最流行的框架，但是从来没有人说它是最�
 ### Spring
 Spring是2003年面世的，以应对旧时代Java企业级开发的复杂性。Spring以依赖注入和面向切面编程为核心，演进成一个易用的web应用开发框架。Spring有着非常多的文档，广泛的使用率和数不清的库，让开发者高效的创建和维护应用程序，并且提供了扁平的学习曲线。
 
-Spring通过反射在运行期间执行依赖注入。当一个Spring applicaiton启动时，在类路径（classpath）中，被标记的类（annotated classes）会被扫描到，由此，具体的类对象被实例化和被连接
+Spring通过反射在运行期间执行依赖注入。当一个Spring applicaiton启动时，在类路径（classpath）中，被标记的类（annotated classes）会被扫描到，由此，具体的类对象被实例化和被连接。
 
 虽然这提升应用程序的弹性，但是也使得应用程序的启动时间变慢，并且内存开销变大。同时，这个机制使得迁移到GraalVM变得非常困难，因为GraalVM不支持反射。
 
@@ -29,14 +29,14 @@ Micronaut是一个现代化的微服务架构框架，由Grails框架作者在20
 
 它提供了所有必要的工具来创造功能全面的微服务应用。同时，它的目标是赋予应用程序快速的启动时间和更低的内存开销。这一切都是在编译期间而非运行期间，使用Java annotation处理器执行依赖注入，创建面向切面代理，配置应用程序。
 
-Micronaut的许多API从Spring 和 Grails中获得灵感。这样的设计快速吸引了新开发者的注意。Micronaut提供了很多的模块，诸如Micronaut HTTP，data，security，和连接其他技术的适配器。然而，就成熟度而言，Micronaut这些库要落后于Spring里对应库
+Micronaut的许多API从Spring 和 Grails中获得灵感。这样的设计快速吸引了新开发者的注意。Micronaut提供了很多的模块，诸如Micronaut HTTP，data，security，和连接其他技术的适配器。然而，就成熟度而言，Micronaut这些库要落后于Spring里对应库。
 
 
 ### Quarkus
-Quarkus 是在2019年由于红帽创造，是一个Kubernetes原生的Java框架框架。它依托于 MicroProfile，Vert.x，Netty，和 Hibernate
+Quarkus 是在2019年由于红帽创造，是一个Kubernetes原生的Java框架框架。它依托于 MicroProfile，Vert.x，Netty，和 Hibernate。
 
 Quarkus的目标是让Java在Kubernetes环境中有着更快的启动速度，更低的内存开销和近乎瞬间的扩容伸缩能力，
-并让Java在Kubernetes环境成为一个主导平台。Quarkus通过自定义Maven插件在编译期间做尽可能做更多的工作
+并让Java在Kubernetes环境成为一个主导平台。Quarkus通过自定义Maven插件在编译期间做尽可能做更多的工作。
 
 Quarkus使用了大量已存在的标准技术，同时对扩展开放。然而这个项目是一年前才开始的，这些扩展的成熟度和兼容性还不明确，很有可能在将来放生改变 
 
@@ -44,9 +44,9 @@ Quarkus使用了大量已存在的标准技术，同时对扩展开放。然而�
 MicroProfile项目始于2016年，那时候大家，对于Oracle会在Java企业级开发这块持续发力，觉得前途未卜
 像它的先驱JEE，MicroProfile只是一份规范，可以被不同的具体架构来实现。
 
-随后，许多具体的实现出现在大家面前，其中最著名的是Payara Micro和Helidon MP。Payara是一种起源于GlassFish的Jakarta企业级服务器。也是MicroProfile一个实现。Helidon则是一个运行时，由Oracle公司在2018年发起,并提供对于MicroProfile规范的实现
+随后，许多具体的实现出现在大家面前，其中最著名的是Payara Micro和Helidon MP。Payara是一种起源于GlassFish的Jakarta企业级服务器。也是MicroProfile一个实现。Helidon则是一个运行时，由Oracle公司在2018年发起,并提供对于MicroProfile规范的实现。
 
-虽然它们都来自于JEE，并且MicroProfile规范文档成熟与完善，但是缺少了针对现代技术的适配器和像是Spring Data和Spring Security这样的库的替代
+虽然它们都来自于JEE，并且MicroProfile规范文档成熟与完善，但是缺少了针对现代技术的适配器和像是Spring Data和Spring Security这样的库的替代。
 
 也因此，MicroProfile的未来是不明朗的，同时Jakarta EE也刚刚开始。
 很有可能两个项目会合并，或者至少紧密合作。
@@ -124,7 +124,7 @@ Quarkus表现得更好一些，内存开销在197MB。Helidon MP则与Spring Boo
 
 其他的框架高负载情况下，在400 请求/秒（使用了原生镜像的Quarkus应用程序）到197 请求/秒（跑在OpenJDK上的Quarkus应用程序）之间。Micronaut相关的实现也在这个数值之间，当Micronaut搭配JDBC时，每秒处理能力要比Micronaut搭配JPA时要稍微好一些。当Micronaut搭配原生镜像时要比Micronaut搭配OpenJDK时要好一些。
 
-就内存使用角度而言，Quarkus搭配OpenJDK，出奇的好，内存开销仅要255MB，这要远远低于Quarkus搭配原生镜像的时候，Quarkus搭配原生镜像时，平均开销在368MB 
+就内存使用角度而言，Quarkus搭配OpenJDK，出奇的好，内存开销仅要255MB，这要远远低于Quarkus搭配原生镜像的时候，Quarkus搭配原生镜像时，平均开销在368MB 。
 
 
 ## 总结
@@ -140,6 +140,6 @@ Quarkus表现得更好一些，内存开销在197MB。Helidon MP则与Spring Boo
 
 原生GraalVM镜像可以得程序在启动速度方面变得非常的快，内存效率也不错。但是当高负载情况下，就体现不出巨大的优势了。
 同时，原生GraalVM镜像也带来了额外的痛点，使得编译时间大大增加，这就让这门技术，仅在要求程序快速
-启动的场景下，才有意义——比如说无服务架构（serverless）或者要求快速扩容伸缩的场景。在其他场景下，投入远大于回报
+启动的场景下，才有意义——比如说无服务架构（serverless）或者要求快速扩容伸缩的场景。在其他场景下，投入远大于回报。
 
 
