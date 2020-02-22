@@ -1,6 +1,6 @@
-# 2020年你应该选择哪个Java微服务框架  -- 探讨 Micronaut， Quarkus 和  Spring Boot ，及各自的优缺点
+# 2020年你应该选择哪个Java微服务框架 —— 探讨 Micronaut， Quarkus 和  Spring Boot ，及各自的优缺点
 
-至今，Java仍旧是用来构建web应用的最流行编程语言之一，但是它不得不面对诸如Go, Python, 和 TypeScript 等新语言的严峻挑战
+至今，Java仍旧是用来构建web应用的最流行编程语言之一，但是它不得不面对诸如Go，Python，和 TypeScript 等新语言的严峻挑战
 
 在Java世界里，Spring框架早已成为微服务开发过程中的事实标准。通过诸如Spring Boot和Spring Data这样的库，Spring框架变得简单易用，大部分场景下，开发过程高效无痛点。
 
@@ -15,7 +15,7 @@ Spring虽然是Java平台最流行的框架，但是从来没有人说它是最�
 
 ## 可选框架
 ### Spring
-Spring是2003年面世的，以应对旧时代Java企业级开发的复杂性。Spring以依赖注入和面向切面编程为核心，演进成一个易用的web应用开发框架。Spring有着非常多的文档，广泛的使用率和数不清的库, 让开发者高效的创建和维护应用程序，并且提供了扁平的学习曲线。
+Spring是2003年面世的，以应对旧时代Java企业级开发的复杂性。Spring以依赖注入和面向切面编程为核心，演进成一个易用的web应用开发框架。Spring有着非常多的文档，广泛的使用率和数不清的库，让开发者高效的创建和维护应用程序，并且提供了扁平的学习曲线。
 
 Spring通过反射在运行期间执行依赖注入。当一个spring applicaiton启动时，在类路径(classpath)中，被标记的类（annotated classes）会被扫描到，由此，具体的类对象被实例化和被连接
 
@@ -29,11 +29,11 @@ Micronaut是一个现代化的微服务架构框架，由Grails框架作者在20
 
 它提供了所有必要的工具来创造功能全面的微服务应用。同时，它的目标是赋予应用程序快速的启动时间和更低的内存开销。这一切都是在编译期间而非运行期间，使用java annotation处理器执行依赖注入，创建面向切面代理，配置应用程序。
 
-Micronaut的许多API从Spring 和 Grails中获得灵感。这样的设计快速吸引了新开发者的注意。Micronaut提供了很多的模块，诸如Micronaut HTTP, data, security, 和连接其他技术的适配器。然而，就成熟度而言，Micronaut这些库要落后于Spring里对应库
+Micronaut的许多API从Spring 和 Grails中获得灵感。这样的设计快速吸引了新开发者的注意。Micronaut提供了很多的模块，诸如Micronaut HTTP，data，security，和连接其他技术的适配器。然而，就成熟度而言，Micronaut这些库要落后于Spring里对应库
 
 
 ### Quarkus
-Quarkus 是在2019年由于红帽创造，是一个Kubernetes原生的java框架框架。它依托于 MicroProfile, Vert.x, Netty, 和 Hibernate
+Quarkus 是在2019年由于红帽创造，是一个Kubernetes原生的java框架框架。它依托于 MicroProfile，Vert.x，Netty，和 Hibernate
 
 Quarkus的目标是让java在Kubernetes环境中有着更快的启动速度，更低的内存开销和近乎瞬间的扩容伸缩能力，
 并让java在Kubernetes环境成为一个主导平台。Quarkus通过自定义Maven插件在编译期间做尽可能做更多的工作
@@ -42,7 +42,7 @@ Quarkus使用了大量已存在的标准技术，同时对扩展开放。然而�
 
 ### Helidon MicroProfile
 MicroProfile 项目始于2016年，那时候大家，对于Oracle会在Java企业级开发这块持续发力，觉得前途未卜
-像它的先驱JEE, MicroProfile只是一份规范，可以被不同的具体架构来实现。
+像它的先驱JEE，MicroProfile只是一份规范，可以被不同的具体架构来实现。
 
 随后，许多具体的实现出现在大家面前，其中最著名的是Payara Micro 和 Helidon MP。Payara是一种起源于GlassFish的 Jakarta企业级服务器。也是MicroProfile一个实现。Helidon则是一个运行时，由Oracle公司在2018年发起,并提供对于MicroProfile规范的实现
 
@@ -58,7 +58,7 @@ MicroProfile 项目始于2016年，那时候大家，对于Oracle会在Java企�
 
 如果一个框架支持多种方式接入数据库，我会一一实现这些变种，然后对这些应用程序做性能作比较。
 
-我把这些应用跑在OpenJDK Docker镜像里。如果某个框架支持对原生GraalVM镜像生成，我也会把这些拿来作比较。你也可以看下我的另一篇文章 “Reactive Database Access with R2DBC, Micronaut and GraalVM” 来获得更多关于GraalVM的资讯
+我把这些应用跑在OpenJDK Docker镜像里。如果某个框架支持对原生GraalVM镜像生成，我也会把这些拿来作比较。你也可以看下我的另一篇文章 “Reactive Database Access with R2DBC，Micronaut and GraalVM” 来获得更多关于GraalVM的资讯
 这些源码你可以在GitHub上找到，地址是https://github.com/lizzyTheLizard/medium-java-framework-compare
 
 我主要从这几个关键点来比较这些应用程序的性能
@@ -103,7 +103,7 @@ Helidon在易用性方面是最糟糕的，因为我花了非常大的努力才�
 
 这里，Micronaut（使用JPA时，花费5.08秒启动 ， 使用JDBC时花费3.8秒）和Quarkus（花费5.7秒启动）都达到了他们的承诺，可以更快的速度启动应用程序。
 
-只有Helidon MP 比 Spring 启动速度更慢 -- 平均要8.27秒 。
+只有Helidon MP 比 Spring 启动速度更慢 —— 平均要8.27秒 。
 
 GraalVM，在启动方面，表现最好，启动时间在1.39 秒 (Quarkus应用程序) and 1.46 秒 (使用了JDBC的Micronaut应用程序)
 远远快于基于OpenJDK的那些实现。
@@ -140,5 +140,6 @@ Quarkus表现得更好一些，内存开销在197 MB。Helidon MP则与Spring Bo
 
 原生GraalVM镜像可以得程序在启动速度方面变得非常的快，内存效率也不错。但是当高负载情况下，就体现不出巨大的优势了。
 同时，原生GraalVM镜像也带来了额外的痛点，使得编译时间大大增加，这就让这门技术，仅在要求程序快速
-启动的场景下，才有意义 -- 比如说 无服务架构（serverless）或者 要求快速扩容伸缩的场景。在其他场景下，投入远大于回报
+启动的场景下，才有意义 —— 比如说 无服务架构（serverless）或者 要求快速扩容伸缩的场景。在其他场景下，投入远大于回报
+
 
