@@ -68,7 +68,7 @@ MicroProfile的未来是不明朗的，与它同在Eclipse基金会的另一个�
 - 应用程序在高负载状态下能够处理多少请求？我使用了JMeter来做压力测试，其中有25%的请求来执行程序的写操作,另外的75%请求来做数据库读操作。在程序达到高负载的状态，测量它的内存占用。
 
 我在谷歌云上面完成了所有的测试。虚拟机采用了四核的intel Haswell架构CPU和15GB的内存。系统则是Ubuntu 19.01。
-所有的测试都重复都做了多次，以避免干扰因素。你可以在https://github.com/lizzyTheLizard/medium-Java-framework-compare/tree/master/compare。 找到这些脚本和原始数据
+所有的测试都重复都做了多次，以避免干扰因素。你可以在https://github.com/lizzyTheLizard/medium-Java-framework-compare/tree/master/compare，找到这些脚本和原始数据。
 
 
 
@@ -80,7 +80,7 @@ MicroProfile的未来是不明朗的，与它同在Eclipse基金会的另一个�
 
 Micronaut的文档也做得很棒，它有着与Spring和Grail类似的API，因此，对于用过Spring的开发者来说也是非常容易上手的。
 
-Quarkus的学习曲线更陡峭一些，我认为，相较于Spring与Micronaut，Quarkus的API和库缺乏成熟度，尤其数据库连接方面，易用性特别糟糕。
+Quarkus的学习曲线更陡峭一些，我认为，相较于Spring与Micronaut，Quarkus的API和库缺乏成熟度，尤其数据库连接方面，易用性比较糟糕。
 
 Helidon在易用性方面是最糟糕的，因为我花了非常大的努力才使得应用程序跑起来。
 
@@ -88,44 +88,37 @@ Helidon在易用性方面是最糟糕的，因为我花了非常大的努力才�
 ### 编译
 所有框架只要是使用了OpenJDK，那么编译时间是差不多的，在6.98秒（使用JDBC的Spring应用程序）到10.7秒（使用Quarkus的应用程序）之间。
 
-而原生GraalVM镜像生成的时间开销非常大，在231.2秒（使用JDBC的Micronaut应用程序）到351.7秒（使用JPA的Micronaut应用程序）之间.从开发过程来说，这使得原生镜像变得基本无意义，编译一个简单的应用程序需要等待4分钟，这是很过分的事。
-
+而原生GraalVM镜像生成的时间开销非常大，在231.2秒（使用JDBC的Micronaut应用程序）到351.7秒（使用JPA的Micronaut应用程序）之间。从开发过程来说，这使得原生GraalVM镜像变得基本无意义，因为编译一个简单的应用程序需要等待4分钟，这是很过分的事。
 
 
 ### 启动
 使用了Spring Data的Spring Boot应用程序平均花费8.16秒来启动。当去除了JPA和Spring Data，这个时间降到了5.8秒。
 
+这里，Micronaut（使用JPA时，花费5.08秒启动，使用JDBC时，花费3.8秒）和Quarkus（花费5.7秒启动）都达到了他们的承诺，可以更快的速度启动应用程序。
 
+只有Helidon MP比Spring 启动速度更慢 —— 平均要8.27秒。
 
-这里，Micronaut（使用JPA时，花费5.08秒启动，使用JDBC时花费3.8秒）和Quarkus（花费5.7秒启动）都达到了他们的承诺，可以更快的速度启动应用程序。
+GraalVM，在启动方面，表现最好，启动时间分别是1.39秒（Quarkus应用程序）和1.46秒（使用了JDBC的Micronaut应用程序），远远快于基于OpenJDK的那些实现。
 
-只有Helidon MP比Spring 启动速度更慢——平均要8.27秒。
+程序启动后的内存使用非常相似。Spring在使用了Spring Data的情况下占用420MB的内存，在使用了JDBC的情况下占用261MB内存
 
-GraalVM，在启动方面，表现最好，启动时间分别是1.39秒（Quarkus应用程序）和1.46秒（使用了JDBC的Micronaut应用程序）
-远远快于基于OpenJDK的那些实现。
-
-程序启动后的内存使用非常相似。Spring会在使用了Spring Data的情况下占用420 MB的内存，在使用了JDBC的情况下占用261MB内存
-
-Micronaut在使用了JPA的情况下，占用262MB的内存，在使用了 JDBC的情况下 占用178MB的内存
-
+Micronaut在使用了JPA的情况下，占用262MB的内存，在使用了JDBC的情况下占用178MB的内存
 
 Quarkus表现得更好一些，内存开销在197MB。Helidon MP则与Spring Boot类似，内存开销在414MB
 
 
 ### 高负载
 
-在高负载情况下，Spring Boot 表现相当的好，在使用了Spring Data情况下，每秒能够处理342个请求，内存开销是581MB
-在使用了JDBC情况下每秒能够处理216个请求，内存开销是484MB。
-毫无疑问，Helidon是排在最后，在高负载情况下，内存开销超过1GB，处理请求只有每秒175个
+在高负载情况下，Spring Boot表现相当的好，在使用了Spring Data情况下，每秒能够处理342个请求，内存开销是581MB，在使用了JDBC情况下每秒能够处理216个请求，内存开销是484MB。毫无疑问地是，Helidon在高负载状态下表现最糟糕，在高负载情况下，内存开销超过1GB，处理请求只有每秒175个。
 
-其他的框架高负载情况下，在400 请求/秒（使用了原生镜像的Quarkus应用程序）到197 请求/秒（跑在OpenJDK上的Quarkus应用程序）之间。Micronaut相关的实现也在这个数值之间，当Micronaut搭配JDBC时，每秒处理能力要比Micronaut搭配JPA时要稍微好一些。当Micronaut搭配原生镜像时要比Micronaut搭配OpenJDK时要好一些。
+其他的框架在高负载情况下，在400请求/秒（使用了原生GraalVM镜像的Quarkus应用程序）到197请求/秒（跑在OpenJDK上的Quarkus应用程序）之间。Micronaut相关的实现也在这个数值之间，当Micronaut搭配JDBC时，每秒处理能力要比Micronaut搭配JPA时要稍微好一些。当Micronaut搭配原生GraalVM镜像时要比Micronaut搭配OpenJDK时要好一些。
 
-就内存使用角度而言，Quarkus搭配OpenJDK，出奇的好，内存开销仅要255MB，这要远远低于Quarkus搭配原生镜像的时候，Quarkus搭配原生镜像时，平均开销在368MB 。
+就内存使用角度而言，Quarkus搭配OpenJDK，出奇的好，内存开销仅要255MB，这要远远低于Quarkus搭配原生GraalVM镜像的时候，Quarkus搭配原生GraalVM镜像时，平均开销在368MB。
 
 
 ## 总结
 
-相较于Spring和MicroProfile这样现有的老框架，Micronaut和Quarkus这类的新框架， 有着更快的启动速度，和更低的内存占用。
+相较于Spring和MicroProfile这样现有的老框架，Micronaut和Quarkus这类的新框架，有着更快的启动速度和更低的内存占用。
 
 但是这些优势是有条件的，仅当程序在空闲时期和低负载状态下才成立。在结合原生GraalVM镜像时，这样的优势更加突出。
 但是在高负载情况下，这些优势就不明显了，即使是用了原生GraalVM镜像。
