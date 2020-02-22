@@ -15,30 +15,27 @@ Spring虽然是Java平台最流行的框架，但是从来没有人说它是最�
 
 ## 可选框架
 ### Spring
-Spring是2003年面世的，以应对旧时代Java企业级开发的复杂性。Spring以依赖注入和面向切面编程为核心，演进成一个易用的web应用开发框架。Spring有着非常多的文档，广泛的使用率和数不清的库，让开发者高效的创建和维护应用程序，并且提供了扁平的学习曲线。
+Spring是在2003年面世的，以应对旧时代Java企业级开发的复杂性。Spring以依赖注入和面向切面编程为核心，演进成一个易用的web应用开发框架。Spring有着非常多的文档，广泛的使用率和数不清的库，让开发者高效的创建和维护应用程序，并且提供了扁平的学习曲线。
 
 Spring通过反射在运行期间执行依赖注入。当一个Spring applicaiton启动时，在类路径（classpath）中，被标记的类（annotated classes）会被扫描到，由此，具体的类对象被实例化和被连接。
 
-虽然这提升应用程序的弹性，但是也使得应用程序的启动时间变慢，并且内存开销变大。同时，这个机制使得迁移到GraalVM变得非常困难，因为GraalVM不支持反射。
-
-
+虽然这能提升应用程序的弹性，但是也使得应用程序的启动时间变慢，并且内存开销变大。同时，这个机制使得迁移到GraalVM变得非常困难，因为GraalVM不支持反射。
 
 
 ### Micronaut
-Micronaut是一个现代化的微服务架构框架，由Grails框架作者在2018年创造。
+Micronaut是一个现代化的微服务架构框架，由Grails框架的作者在2018年创造。
 
-它提供了所有必要的工具来创造功能全面的微服务应用。同时，它的目标是赋予应用程序快速的启动时间和更低的内存开销。这一切都是在编译期间而非运行期间，使用Java annotation处理器执行依赖注入，创建面向切面代理，配置应用程序。
+它提供了所有必要的工具来创造功能全面的微服务应用。同时，它的目标是赋予应用程序快速的启动时间和更低的内存开销。这一切都发生在编译期间而非运行时，使用了Java annotation处理器执行依赖注入，创建面向切面代理，配置应用程序。
 
-Micronaut的许多API从Spring 和 Grails中获得灵感。这样的设计快速吸引了新开发者的注意。Micronaut提供了很多的模块，诸如Micronaut HTTP，data，security，和连接其他技术的适配器。然而，就成熟度而言，Micronaut这些库要落后于Spring里对应库。
+Micronaut的许多API从Spring和Grails中获得灵感。这样的设计快速吸引了新开发者的注意。Micronaut提供了很多的模块，诸如Micronaut HTTP，data，security，和连接其他技术的连接器。然而，就成熟度而言，Micronaut的这些库要落后于Spring里对应的库。
 
 
 ### Quarkus
-Quarkus 是在2019年由于红帽创造，是一个Kubernetes原生的Java框架框架。它依托于 MicroProfile，Vert.x，Netty，和 Hibernate。
+Quarkus，在2019年由于红帽创造，是一个Kubernetes原生的Java框架。它依托于MicroProfile，Vert.x，Netty和Hibernate。
 
-Quarkus的目标是让Java在Kubernetes环境中有着更快的启动速度，更低的内存开销和近乎瞬间的扩容伸缩能力，
-并让Java在Kubernetes环境成为一个主导平台。Quarkus通过自定义Maven插件在编译期间做尽可能做更多的工作。
+Quarkus的目标是让Java在容器编排环境中有着更快的启动速度，更低的内存开销和近乎瞬间的扩容伸缩能力，并期望让Java在Kubernetes环境能成为一个主导平台。为达到此目的，Quarkus通过自定义Maven插件在编译期间尽可能地做更多的工作。
 
-Quarkus使用了大量已存在的标准技术，同时对扩展开放。然而这个项目是一年前才开始的，这些扩展的成熟度和兼容性还不明确，很有可能在将来放生改变 
+Quarkus使用了大量已存在的标准技术，同时对扩展开放。然而这个项目是一年前才开始的，这些扩展的成熟度和兼容性还不明确，很有可能在将来随着平台的成长发生改变。 
 
 ### Helidon MicroProfile
 MicroProfile项目始于2016年，那时候大家，对于Oracle会在Java企业级开发这块持续发力，觉得前途未卜
