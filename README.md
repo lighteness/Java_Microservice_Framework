@@ -1,4 +1,4 @@
-# 2020年你应该选择哪个Java微服务框架 —— 探讨 Micronaut，Quarkus和Spring Boot，及各自的优缺点
+# 2020年你应该选择哪个Java微服务框架 —— 探讨 Micronaut，Quarkus和Spring Boot及各自的优缺点
 
 至今，Java仍旧是用来构建web应用的最流行编程语言之一 —— 但是它不得不面对诸如Go，Python，和TypeScript等新语言的严峻挑战。
 
@@ -38,15 +38,14 @@ Quarkus的目标是让Java在容器编排环境中有着更快的启动速度，
 Quarkus使用了大量已存在的标准技术，同时对扩展开放。然而这个项目是一年前才开始的，这些扩展的成熟度和兼容性还不明确，很有可能在将来随着平台的成长发生改变。 
 
 ### Helidon MicroProfile
-MicroProfile项目始于2016年，那时候大家，对于Oracle会在Java企业级开发这块持续发力，觉得前途未卜
-像它的先驱JEE，MicroProfile只是一份规范，可以被不同的具体架构来实现。
+MicroProfile项目始于2016年，那时候大家，对于Oracle会在Java企业级开发这块持续发力，觉得前途未卜。
+像它的先驱JEE，MicroProfile只是一份规范，可以被具体架构来实现。
 
-随后，许多具体的实现出现在大家面前，其中最著名的是Payara Micro和Helidon MP。Payara是一种起源于GlassFish的Jakarta企业级服务器。也是MicroProfile一个实现。Helidon则是一个运行时，由Oracle公司在2018年发起,并提供对于MicroProfile规范的实现。
+随后，许多具体的实现出现在大家面前，其中最著名的是Payara Micro和Helidon MP。Payara是一种起源于GlassFish的Jakarta企业级服务器，也是MicroProfile一个实现。Helidon则是一个运行时，由Oracle公司在2018年发起，并提供了对于MicroProfile规范的实现。
 
-虽然它们都来自于JEE，并且MicroProfile规范文档成熟与完善，但是缺少了针对现代技术的适配器和像是Spring Data和Spring Security这样的库的替代。
+虽然它们都来自于JEE，并且MicroProfile规范文档成熟与完善，但是缺少了针对其他现代技术的连接器或是一些必要的库来替代Spring Data和Spring Security。
 
-也因此，MicroProfile的未来是不明朗的，同时Jakarta EE也刚刚开始。
-很有可能两个项目会合并，或者至少紧密合作。
+MicroProfile的未来是不明朗的，与它同在Eclipse基金会的另一个项目Jakarta EE，也刚刚开始发展起来。在未来，两者很有可能会合并，—— 至少紧密关联。
 
 
 ## 框架的比较
@@ -91,7 +90,7 @@ Helidon在易用性方面是最糟糕的，因为我花了非常大的努力才�
 
 而原生GraalVM镜像生成的时间开销非常大，在231.2秒（使用JDBC的Micronaut应用程序）到351.7秒（使用JPA的Micronaut应用程序）之间.从开发过程来说，这使得原生镜像变得基本无意义，编译一个简单的应用程序需要等待4分钟，这是很过分的事。
 
-。。。
+
 
 ### 启动
 使用了Spring Data的Spring Boot应用程序平均花费8.16秒来启动。当去除了JPA和Spring Data，这个时间降到了5.8秒。
